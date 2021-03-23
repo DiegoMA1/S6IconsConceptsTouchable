@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import { StyleSheet, FlatList, TouchableWithoutFeedback } from 'react-native';
-import {Header} from './Header';
-import {Feed} from './Feed';
-import {UserProfile} from './UserProfile';
+import {Header} from './src/components/Header';
+import {Feed} from './src/components/Feed';
+import {UserProfile} from './src/components/UserProfile';
 
 export default function App() {
   const dataUser = {

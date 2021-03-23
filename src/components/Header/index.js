@@ -13,7 +13,7 @@ export const Header = () => {
         <Feather name="search" size={20} color="rgb(110,110,110)" />
       </View>
       <Image 
-        source={require('./assets/icon_dog.png')}
+        source={require('../../../assets/icon_dog.png')}
         style={styles.image}
       />
       <Text style={styles.text}>Dogstagram</Text>    
