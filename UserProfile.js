@@ -1,17 +1,11 @@
-import React, {useState} from 'react';
-import { StyleSheet, View, Image, TextInput, Button } from 'react-native';
+import React from 'react';
+import { StyleSheet, View, Image, TextInput, Button, Alert } from 'react-native';
 
 export const UserProfile = (props) => {
   
   const data = props.data; 
 
   const [text, onChangeText] = React.useState("");
-  
-  const [isFocus, setIsFocus] = useState(false);
-
-  const onFocus = () =>{
-    setIsFocus(!isFocus)
-  }
   
   return(
     <>
@@ -30,11 +24,14 @@ export const UserProfile = (props) => {
         textBreakStrategy='balanced'
         onChangeText={onChangeText}
         value={text}
-        onFocus={() => onFocus()}
+        onFocus={() => props.onFocus()}
       />
     </View>
     <View style={styles.button}>
-      { isFocus ? <Button title="Post" onPress={() => Alert.alert('Simple Button pressed')} />  
+      { props.isFocus ? <Button title="Post" onPress={() => {
+        Alert.alert('Simple Button pressed')
+        props.onFocus()
+    }} />  
                 : null }
     </View>
     </>
@@ -49,7 +46,6 @@ const styles = StyleSheet.create({
     paddingBottom: 15
   },
   textInput:{
-    fontFamily: 'sans-serif-light',
     fontSize: 15,
     width: 330,
     color: 'black', 

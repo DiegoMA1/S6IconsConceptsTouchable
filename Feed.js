@@ -14,6 +14,7 @@ export const Feed = (props) => {
     setData(data);
     setLike(!like);
   };
+
         
   return(
     <>  
@@ -46,7 +47,6 @@ const styles = StyleSheet.create({
       marginTop: 1,
   },
   text:{
-    fontFamily: 'sans-serif-light',
     fontSize: 20,
     color: 'black' 
   },

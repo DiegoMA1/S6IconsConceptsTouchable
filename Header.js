@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
       borderBottomWidth: 1,
     },
     text:{
-      fontFamily: 'sans-serif-light',
       fontSize: 30,
       color: 'white' 
     },

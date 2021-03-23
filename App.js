@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, Text, View, Image, FlatList } from 'react-native';
+import React, {useState} from 'react';
+import { StyleSheet, FlatList, TouchableWithoutFeedback } from 'react-native';
 import {Header} from './Header';
 import {Feed} from './Feed';
 import {UserProfile} from './UserProfile';
@@ -54,18 +54,29 @@ export default function App() {
       "like": true,
     },
   ]
+  const [isFocus, setIsFocus] = useState(false);
+
+  const onFocus = () =>{
+    setIsFocus(!isFocus)
+  }
+  const onFocusFlat = () =>{
+    if(isFocus)
+      setIsFocus(!isFocus)
+  }
   
   return (
     <>
     <Header />
-    <UserProfile data = {dataUser}/>
-    <FlatList 
-      keyExtractor={ (item) => String(item['_id']) }
-      data = {dataFeed}
-      renderItem = { ({item}) =>(
-        <Feed data={item}/>
-      )}
-    />
+    <UserProfile data = {dataUser} onFocus={onFocus} isFocus={isFocus}/>
+    <TouchableWithoutFeedback onPress={onFocusFlat}>
+      <FlatList 
+        keyExtractor={ (item) => String(item['_id']) }
+        data = {dataFeed}
+        renderItem = { ({item}) =>(
+          <Feed data={item}/>
+        )}
+      />
+    </TouchableWithoutFeedback>
     </>
   );
 }
@@ -79,7 +90,6 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
   },
   text:{
-    fontFamily: 'sans-serif-light',
     fontSize: 20,
     color: 'black' 
   },
