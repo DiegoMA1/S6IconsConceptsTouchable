@@ -63,15 +63,32 @@ export default function App() {
     if(isFocus)
       setIsFocus(!isFocus)
   }
+
+
+  const [exampleState, setExampleState] = useState(dataFeed)
+
+  const addElement = (userData, text) => {
+    let limit = dataFeed.length;
+    let body = {
+      _id: limit+1,
+      description: text,
+      image: userData.image,
+      name: userData.name,
+      like: false,
+    }
+    console.log(body);
+    var newArray = [...dataFeed , body];
+    setExampleState(newArray);
+  }
   
   return (
     <>
     <Header />
-    <UserProfile data = {dataUser} onFocus={onFocus} isFocus={isFocus}/>
+    <UserProfile data = {dataUser} onFocus={onFocus} isFocus={isFocus} addElement={addElement}/>
     <TouchableWithoutFeedback onPress={onFocusFlat}>
       <FlatList 
         keyExtractor={ (item) => String(item['_id']) }
-        data = {dataFeed}
+        data = {exampleState}
         renderItem = { ({item}) =>(
           <Feed data={item}/>
         )}

@@ -31,6 +31,8 @@ export const UserProfile = (props) => {
       { props.isFocus ? <Button title="Post" onPress={() => {
         Alert.alert('Simple Button pressed')
         props.onFocus()
+        props.addElement(data,text)
+        onChangeText("")
     }} />  
                 : null }
     </View>
